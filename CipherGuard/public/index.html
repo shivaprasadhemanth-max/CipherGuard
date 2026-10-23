@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="CipherGuard is a privacy-first password strength analyzer. Check password strength locally in your browser.">
+  <title>CipherGuard — Password Strength Analyzer</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="CipherGuard home">
+      <span class="brand-mark" aria-hidden="true">◆</span>
+      <span>Cipher<span class="brand-accent">Guard</span></span>
+    </a>
+    <span class="privacy-pill"><span class="status-dot"></span> Local analysis · No password uploads</span>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="eyebrow"><span class="eyebrow-line"></span> DIGITAL SECURITY TOOLKIT</div>
+      <h1>Make your password<br><span>hard to crack.</span></h1>
+      <p class="hero-copy">Test password strength, spot weak patterns, and get practical improvements — right in your browser.</p>
+    </section>
+
+    <section class="analyzer-card" aria-labelledby="analyzer-title">
+      <div class="card-heading">
+        <div>
+          <div class="section-kicker">PASSWORD CHECK</div>
+          <h2 id="analyzer-title">Strength analyzer</h2>
+        </div>
+        <div class="shield-icon" aria-hidden="true">⬡</div>
+      </div>
+
+      <label class="field-label" for="password">Enter a test password</label>
+      <div class="password-field">
+        <input id="password" type="password" autocomplete="new-password" spellcheck="false"
+          placeholder="Type a password to analyze…" aria-describedby="privacy-note">
+        <button id="toggle-visibility" class="visibility-btn" type="button" aria-label="Show password">Show</button>
+      </div>
+      <p id="privacy-note" class="privacy-note"><span aria-hidden="true">●</span> Your password stays in this browser. It is never sent to our server.</p>
+
+      <div class="strength-block">
+        <div class="strength-topline">
+          <span class="field-label">Estimated strength</span>
+          <span id="strength-label" class="strength-label neutral">Waiting for input</span>
+        </div>
+        <div class="meter-track" role="progressbar" aria-label="Password strength" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="strength-meter">
+          <div id="meter-fill" class="meter-fill"></div>
+        </div>
+        <div class="meter-foot"><span>WEAK</span><span>MODERATE</span><span>STRONG</span></div>
+      </div>
+
+      <div class="score-panel">
+        <div class="score-number"><span id="score">0</span><small>/100</small></div>
+        <div class="score-description">
+          <strong id="score-title">Start with a unique password</strong>
+          <p id="score-summary">Your analysis will appear here as you type.</p>
+        </div>
+      </div>
+
+      <div class="checks-heading">
+        <h3>Security checklist</h3>
+        <span id="checks-count">0 of 6 complete</span>
+      </div>
+      <div class="checklist" id="checklist">
+        <div class="check-item" data-check="length"><span class="check-symbol">○</span><span>At least 12 characters</span></div>
+        <div class="check-item" data-check="case"><span class="check-symbol">○</span><span>Uppercase and lowercase letters</span></div>
+        <div class="check-item" data-check="number"><span class="check-symbol">○</span><span>Contains a number</span></div>
+        <div class="check-item" data-check="symbol"><span class="check-symbol">○</span><span>Contains a symbol</span></div>
+        <div class="check-item" data-check="unique"><span class="check-symbol">○</span><span>Avoids obvious repetition</span></div>
+        <div class="check-item" data-check="pattern"><span class="check-symbol">○</span><span>Avoids common patterns</span></div>
+      </div>
+
+      <div class="feedback-box" id="feedback-box">
+        <div class="feedback-icon" aria-hidden="true">✦</div>
+        <div><h3 id="feedback-title">Tips for a stronger password</h3><ul id="suggestions"><li>Use 12–16 or more characters.</li><li>Prefer a unique passphrase with unrelated words.</li><li>Never reuse passwords across accounts.</li></ul></div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="generator-heading">
+        <div><div class="section-kicker">QUICK GENERATOR</div><h2>Need a stronger one?</h2></div>
+        <span class="generator-spark" aria-hidden="true">✳</span>
+      </div>
+      <p class="generator-copy">Create a random password locally. Save it in a reputable password manager.</p>
+      <div class="generator-controls">
+        <label for="length-range">Length <strong id="length-value">18</strong></label>
+        <input id="length-range" type="range" min="12" max="32" value="18">
+      </div>
+      <div class="generator-output">
+        <input id="generated-password" type="text" readonly aria-label="Generated password" placeholder="Your generated password appears here">
+        <button id="copy-password" class="copy-btn" type="button">Copy</button>
+      </div>
+      <button id="generate-password" class="primary-btn" type="button"><span>✳</span> Generate secure password</button>
+      <p id="generator-status" class="generator-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="bottom-note">
+      <div class="bottom-lock" aria-hidden="true">⌑</div>
+      <div><strong>Security is a habit, not a score.</strong><p>Use unique passwords, a password manager, and multi-factor authentication. This tool provides an estimate and does not check breached-password databases.</p></div>
+    </section>
+    <footer><span>© <span id="year"></span> CipherGuard</span><span>Built for safer digital habits.</span></footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
